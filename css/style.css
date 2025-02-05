@@ -1,0 +1,155 @@
+body {
+    background-image: url('../images/backgroundop.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    font-family: 'Poppins', sans-serif; /* Modern Font */
+}
+
+section {
+    background: transparent; /* Removes grey background */
+    padding: 50px 20px;
+    width: 80%;
+    margin: auto;
+    text-align: center;
+}
+
+h2 {
+    font-size: 36px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+p {
+    font-size: 18px;
+    color: #555;
+    line-height: 1.6;
+}
+
+.button {
+    background-color: #d32f2f;
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background 0.3s;
+    display: inline-block;
+    margin-top: 20px;
+}
+
+.button:hover {
+    background-color: #b71c1c;
+}
+
+.slideshow {
+    width: 100vw; /* Full width of the screen */
+    max-width: 100%;
+    margin: auto;
+    overflow: hidden;
+    position: relative;
+    height: 500px; /* Ensures slideshow takes up fixed space */
+}
+
+.slideshow-container {
+    display: flex;
+    transition: transform 1s ease-in-out;
+    width: 300%; /* Allows left & right images to show */
+    justify-content: center;
+}
+
+.slide {
+    width: 33.33%; /* Allows 3 images to be seen at once */
+    flex-shrink: 0;
+    opacity: 0.7; /* Make side images slightly transparent */
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
+
+.slide img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.active {
+    opacity: 1; /* Center image is fully visible */
+    transform: scale(1.1); /* Slight zoom effect */
+}
+
+header {
+    background: black;
+    width: 100%;
+    padding: 20px 0;
+    text-align: center;
+    position: relative;
+}
+
+header h1 {
+    color: white; /* Makes the text visible */
+    font-size: 42px; /* Increases size */
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: #d32f2f;
+}
+
+#floating-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: red;
+    color: white;
+    padding: 15px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+#floating-button:hover {
+    background: darkred;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    section {
+        width: 95%; /* Adjust width for smaller screens */
+        padding: 30px;
+    }
+    .slideshow {
+        height: 300px; /* Reduce slideshow height for mobile */
+    }
+    h2 {
+        font-size: 28px; /* Smaller font size */
+    }
+    nav ul {
+        flex-direction: column; /* Stack menu items */
+    }
+}
