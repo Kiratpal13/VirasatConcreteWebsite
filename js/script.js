@@ -1,7 +1,8 @@
 function toggleMenu() {
-    var menu = document.querySelector(".nav-menu");
-    menu.style.display = menu.style.display === "block" ? "none" : "block";
+    const menu = document.querySelector(".nav-menu");
+    menu.style.display = (menu.style.display === "block") ? "none" : "block";
 }
+
 
 function dialNumber() {
     window.location.href = "tel:+15879362818";
