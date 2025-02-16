@@ -1,0 +1,134 @@
+HTML:
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virasat Concrete - Transforming Concrete into Masterpieces</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/script.js" defer></script>
+</head>
+<body>
+    <header>
+        <button class="menu-icon" onclick="toggleMenu()">MENU</button>
+        <nav class="nav-menu">
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Virasat Concrete</h1>
+            <div class="separator-line"></div>
+            <p>Where Strength Meets Elegance – Crafting Durable and Stunning Concrete Designs.</p>
+            <a href="#contact" class="cta-button">Request a Quote →</a>
+        </div>
+    </section>
+
+    <section id="services" class="services">
+        <h2>Our Services</h2>
+        <div class="service-grid">
+            <div class="service-card">
+                <h3>Concrete Driveways</h3>
+                <p>Durable and stylish driveways tailored to your needs.</p>
+            </div>
+            <div class="service-card">
+                <h3>Concrete Foundations & Flooring</h3>
+                <p>Strong and reliable foundations for residential and commercial projects.</p>
+            </div>
+            <div class="service-card">
+                <h3>Stamped & Decorative Concrete</h3>
+                <p>Enhance aesthetics with custom decorative concrete finishes.</p>
+            </div>
+            <div class="service-card">
+                <h3>Sidewalks & Walkways</h3>
+                <p>Custom-designed concrete sidewalks and pathways for durability and aesthetics.</p>
+            </div>
+            <div class="service-card">
+                <h3>Patios & Outdoor Spaces</h3>
+                <p>Beautiful outdoor spaces crafted with precision and creativity.</p>
+            </div>
+            <div class="service-card">
+                <h3>Concrete Stairs</h3>
+                <p>Durable and well-crafted concrete stairs for residential and commercial buildings, including side entry stairs for basement access.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <h2>About Us</h2>
+        <p>
+            At <strong>Virasat Concrete</strong>, we bring innovation, craftsmanship, and durability to every project. 
+            With years of experience in the industry, we specialize in high-quality concrete solutions tailored 
+            to both residential and commercial needs. Our team is dedicated to transforming visions into reality 
+            by delivering excellence in every foundation, driveway, patio, and walkway we create.
+        </p>
+        <p>
+            From small-scale projects to large commercial developments, we prioritize customer satisfaction, 
+            precision, and long-lasting quality. Your dream project starts with a solid foundation—trust 
+            Virasat Concrete to make it happen.
+        </p>
+     
+        <section id="projects" class="projects">
+            <h2>Our Projects</h2>
+            <div class="slideshow-container">
+                <div class="slide fade">
+                    <img src="images/image1.jpeg" alt="Project 1">
+                </div>
+                <div class="slide fade">
+                    <img src="images/image2.jpeg" alt="Project 2">
+                </div>
+                <div class="slide fade">
+                    <img src="images/image3.jpeg" alt="Project 3">
+                </div>
+                <div class="slide fade">
+                    <img src="images/image4.jpeg" alt="Project 4">
+                </div>
+                <div class="slide fade">
+                    <img src="images/image5.jpeg" alt="Project 5">
+                </div>
+            </div>
+        </section>
+        
+        
+
+    <section id="contact" class="contact">
+        <h2>Get in Touch</h2>
+        <p>We are here to help with all your concrete needs. Feel free to reach out to us.</p>
+
+        <div class="contact-container">
+            <form action="https://formsubmit.co/info@virasatconcrete.ca" method="POST">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" placeholder="Your Name" required>
+            
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="Your Email" required>
+            
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" placeholder="Your Phone Number" required>
+            
+                <label for="message">Message</label>
+                <textarea id="message" name="message" placeholder="Your Message" required></textarea>
+            
+                <button type="submit">Send Message</button>
+            </form>
+
+            <div class="contact-info">
+                <p><strong>Virasat Concrete Ltd.</strong></p>
+                <p>&nbsp;&nbsp;&nbsp;Calgary<br>AB, Canada</p>
+                <p><strong>Phone:</strong> <a href="tel:+15879362818">(587) 936-2818</a></p>
+                <p><strong>Email:</strong> <a href="mailto:info@virasatconcrete.ca">info@virasatconcrete.ca</a></p>
+            </div>
+        </div>
+    </section>
+
+    <button id="estimate-btn" onclick="dialNumber()">Get a Free Estimate Today</button>
+</body>
+</html>
