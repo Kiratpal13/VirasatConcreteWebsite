@@ -261,15 +261,88 @@ button:hover {
 }
 
 /* Responsive Design */
+/* 📌 Mobile-Friendly Layout */
 @media (max-width: 768px) {
+    /* Adjust Header & Menu */
+    .menu-icon {
+        font-size: 16px;
+        top: 15px;
+        right: 20px;
+    }
+
+    .nav-menu {
+        width: 100%; /* Full-width menu */
+        text-align: center;
+        right: 0;
+    }
+
+    .nav-menu ul {
+        padding: 0;
+    }
+
+    .nav-menu ul li {
+        padding: 15px;
+    }
+
+    /* Hero Section */
+    .hero {
+        padding: 5%;
+        height: auto;
+        text-align: center;
+        justify-content: center;
+    }
+
+    .hero-content {
+        max-width: 90%;
+    }
+
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+
+    .separator-line {
+        width: 80px;
+        height: 3px;
+    }
+
+    /* Services Grid (1 Column Instead of 2) */
+    .service-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Contact Section */
     .contact-container {
         flex-direction: column;
-        align-items: center;
         text-align: center;
     }
-    .contact form,
+
+    .contact form, 
     .contact-info {
         width: 100%;
+    }
+
+    /* Slideshow Responsive */
+    .slideshow-container {
+        max-width: 100%;
+        height: 350px;
+    }
+
+    .slide img {
+        height: auto;
+        object-fit: contain; /* Ensures images don’t get cut off */
+    }
+
+    /* Adjust Buttons */
+    .cta-button {
+        font-size: 14px;
+        padding: 10px 20px;
+    }
+
+    #estimate-btn {
+        font-size: 14px;
+        padding: 12px;
+        bottom: 10px;
+        right: 10px;
     }
 }
 
