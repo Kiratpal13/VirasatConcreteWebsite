@@ -17,6 +17,24 @@ header {
     padding: 10px 15px;
     z-index: 1000;
 }
+/* Logo Style */
+.logo {
+    font-size: 22px;
+    font-weight: bold;
+    font-family: 'Poppins', sans-serif; /* Modern font */
+    color: #FF6600; /* Modern orange shade for visibility */
+    text-decoration: none;
+    position: absolute;
+    top: 15px;
+    left: 20px;
+    transition: color 0.3s ease-in-out;
+}
+
+/* Hover effect for the logo */
+.logo:hover {
+    color: #CC5500; /* Slightly darker shade on hover */
+}
+
 
 /* Move Menu Button to Top Right */
 .menu-icon {
@@ -79,7 +97,7 @@ header {
     justify-content: flex-start;
     text-align: left;
     height: 100vh;
-    background: url('../images/image1.jpeg') no-repeat center center;
+    background: url('../images/concrete-driveway-calgary.jpeg') no-repeat center center;
     background-size: cover;
     padding-left: 8%;
 }
