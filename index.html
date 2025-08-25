@@ -108,7 +108,7 @@
             </div>
         </div>
     </section>-->
-    <section id="projects" class="projects">
+   <section id="projects" class="projects">
     <h2>Our Recent Concrete Projects in Calgary & Surrounding Areas</h2>
     <div class="slideshow-container">
         <div class="slide fade">
@@ -194,56 +194,6 @@
     </div>
 </section>
 
-<script>
-let slideIndex = 0;
-let slides = document.getElementsByClassName("slide");
-let dots = document.getElementsByClassName("dot");
-let startX = 0;
-let endX = 0;
-
-showSlides();
-
-function showSlides() {
-  for (let i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";  
-  }
-  slideIndex++;
-  if (slideIndex > slides.length) {slideIndex = 1}    
-  for (let i = 0; i < dots.length; i++) {
-    dots[i].className = dots[i].className.replace(" active", "");
-  }
-  slides[slideIndex-1].style.display = "block";  
-  dots[slideIndex-1].className += " active";
-  setTimeout(showSlides, 5000);
-}
-
-// Next/Prev controls
-document.querySelector(".prev").addEventListener("click", () => { changeSlide(-1); });
-document.querySelector(".next").addEventListener("click", () => { changeSlide(1); });
-
-function changeSlide(n) {
-  slideIndex += n-1;
-  showSlides();
-}
-
-// Dot controls
-Array.from(dots).forEach((dot, i) => {
-  dot.addEventListener("click", () => {
-    slideIndex = i;
-    showSlides();
-  });
-});
-
-// Touch/swipe support
-const container = document.querySelector(".slideshow-container");
-container.addEventListener("touchstart", e => { startX = e.touches[0].clientX; });
-container.addEventListener("touchend", e => {
-  endX = e.changedTouches[0].clientX;
-  if (startX - endX > 50) { changeSlide(1); } // swipe left
-  if (endX - startX > 50) { changeSlide(-1); } // swipe right
-});
-</script>
-
 <style>
 .slideshow-container {
   position: relative;
@@ -252,31 +202,36 @@ container.addEventListener("touchend", e => {
   overflow: hidden;
 }
 
-.slide img {
+.slide {
+  display: none;
   width: 100%;
+  text-align: center;
+}
+
+.slide img {
+  max-width: 100%;
   height: auto;
-  display: block;
+  object-fit: contain; /* Ensure full image fits */
+  transition: opacity 1s ease-in-out;
 }
 
 .prev, .next {
   cursor: pointer;
   position: absolute;
   top: 50%;
-  width: auto;
   padding: 12px;
   color: #fff;
   font-weight: bold;
   font-size: 24px;
-  transition: 0.6s ease;
   border-radius: 50%;
   user-select: none;
   background-color: rgba(0,0,0,0.4);
   transform: translateY(-50%);
+  z-index: 10;
 }
 
 .next { right: 10px; }
 .prev { left: 10px; }
-
 .prev:hover, .next:hover { background-color: rgba(0,0,0,0.8); }
 
 .dots-container {
@@ -302,6 +257,65 @@ container.addEventListener("touchend", e => {
   .dot { height: 10px; width: 10px; }
 }
 </style>
+
+<script>
+let slideIndex = 0;
+let slides = document.getElementsByClassName("slide");
+let dots = document.getElementsByClassName("dot");
+let slideTimer;
+
+function showSlides(n) {
+  if (n !== undefined) {
+    slideIndex = n;
+    clearTimeout(slideTimer);
+  }
+
+  for (let i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";  
+  }
+
+  slideIndex++;
+  if (slideIndex > slides.length) { slideIndex = 1; }
+
+  slides[slideIndex-1].style.display = "block";  
+  dots.forEach?.(dot => dot.classList.remove("active"));
+  dots[slideIndex-1].classList.add("active");
+
+  // Adjust container height based on image
+  const imgHeight = slides[slideIndex-1].querySelector("img").naturalHeight;
+  const imgWidth = slides[slideIndex-1].querySelector("img").naturalWidth;
+  const container = document.querySelector(".slideshow-container");
+  const newHeight = container.offsetWidth * (imgHeight / imgWidth);
+  container.style.height = newHeight + "px";
+
+  slideTimer = setTimeout(showSlides, 5000); // auto slide
+}
+
+// Next/Prev controls
+function changeSlide(n) {
+  showSlides(slideIndex + n - 1);
+}
+
+// Dot controls
+Array.from(dots).forEach((dot, i) => {
+  dot.addEventListener("click", () => { showSlides(i); });
+});
+
+// Touch/swipe support
+let startX = 0, endX = 0;
+const container = document.querySelector(".slideshow-container");
+container.addEventListener("touchstart", e => { startX = e.touches[0].clientX; });
+container.addEventListener("touchend", e => {
+  endX = e.changedTouches[0].clientX;
+  if (startX - endX > 50) changeSlide(1);
+  if (endX - startX > 50) changeSlide(-1);
+});
+
+// Initialize
+showSlides();
+document.querySelector(".prev").addEventListener("click", () => { changeSlide(-1); });
+document.querySelector(".next").addEventListener("click", () => { changeSlide(1); });
+</script>
     
 
     <section id="contact" class="contact">
@@ -337,4 +351,5 @@ container.addEventListener("touchend", e => {
     <button id="estimate-btn" onclick="dialNumber()">Get a Free Estimate Today</button>
 </body>
 </html>
+
 
