@@ -1,0 +1,798 @@
+/* 1. Variables & Reset */
+:root {
+    --primary: #0f172a;      /* Deep Navy (Enterprise Trust) */
+    --accent: #f97316;       /* Safety Orange (High Conversion) */
+    --accent-hover: #ea580c;
+    --text: #334155;         /* Slate Grey (Readable) */
+    --bg-light: #f8fafc;
+    --bg-white: #ffffff;
+    --border: #e2e8f0;
+    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --font-heading: 'Oswald', sans-serif;
+    --font-body: 'Inter', sans-serif;
+    --radius: 8px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+    font-family: var(--font-body);
+    color: var(--text);
+    line-height: 1.6;
+    background-color: var(--bg-white);
+    padding-bottom: 60px; /* Space for mobile sticky bar */
+}
+
+/* 2. Typography & Layout */
+h1, h2, h3, h4 { font-family: var(--font-heading); color: var(--primary); text-transform: uppercase; letter-spacing: 0.5px; }
+h1 { font-size: 2.5rem; line-height: 1.2; }
+h2 { font-size: 2rem; margin-bottom: 1rem; }
+
+.container { width: 90%; max-width: 1200px; margin: 0 auto; padding: 0 15px; }
+.section { padding: 80px 0; }
+.section-header { text-align: center; margin-bottom: 50px; max-width: 700px; margin-left: auto; margin-right: auto; }
+
+/* 3. Utility Classes */
+.btn {
+    display: inline-block;
+    padding: 12px 28px;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: var(--radius);
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    cursor: pointer;
+    border: none;
+}
+.btn-primary { background: var(--accent); color: white; }
+.btn-primary:hover { background: var(--accent-hover); transform: translateY(-2px); }
+.btn-outline-white { border: 2px solid white; color: white; margin-left: 10px; }
+.btn-outline-white:hover { background: white; color: var(--primary); }
+.full-width { width: 100%; text-align: center; }
+
+.skip-link { position: absolute; top: -40px; left: 0; background: var(--primary); color: white; padding: 8px; z-index: 100; }
+.skip-link:focus { top: 0; }
+
+/* 4. Header & Navigation */
+.site-header {
+    background: white;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+.header-inner { display: flex; justify-content: space-between; align-items: center; height: 70px; }
+.logo { font-family: var(--font-heading); font-size: 1.5rem; font-weight: 700; color: var(--primary); text-decoration: none; }
+.nav-list { display: flex; list-style: none; gap: 25px; align-items: center; }
+.nav-list a { text-decoration: none; color: var(--text); font-weight: 500; font-size: 0.95rem; transition: color 0.2s; }
+.nav-list a:hover { color: var(--accent); }
+.nav-cta-btn { background: var(--primary); color: white !important; padding: 8px 18px; border-radius: 4px; }
+.nav-cta-btn:hover { background: #1e293b; }
+
+/* Mobile Menu Toggle */
+.mobile-toggle { display: none; background: none; border: none; cursor: pointer; }
+.hamburger { display: block; width: 25px; height: 3px; background: var(--primary); position: relative; }
+.hamburger::before, .hamburger::after {
+    content: ''; position: absolute; left: 0; width: 100%; height: 3px; background: var(--primary); transition: 0.3s;
+}
+.hamburger::before { top: -8px; }
+.hamburger::after { top: 8px; }
+
+/* 5. Hero Section */
+.hero { position: relative; height: 85vh; min-height: 500px; display: flex; align-items: center; justify-content: center; text-align: center; color: #ffffff; }
+.hero-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; }
+.hero-bg img { width: 100%; height: 100%; object-fit: cover; }
+.overlay { position: absolute; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); }
+.hero-content { position: relative; z-index: 1; }
+.hero-content h1 { color: #ffffff; text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.8); }
+.hero-sub { font-size: 1.2rem; max-width: 600px; margin: 15px auto 30px; color: #ffffff; text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8); }
+
+/* 6. Trust Bar */
+.trust-bar { background: var(--primary); color: white; padding: 20px 0; font-size: 0.9rem; }
+.trust-grid { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; }
+.trust-item .icon { color: var(--accent); font-weight: bold; margin-right: 5px; }
+
+/* 7. Services Grid */
+.grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+.service-card {
+    background: white; border: 1px solid var(--border); border-radius: var(--radius); padding: 30px;
+    text-decoration: none; color: var(--text); transition: all 0.3s ease; display: block;
+}
+.service-card:hover { transform: translateY(-5px); box-shadow: var(--shadow); border-color: var(--accent); }
+.card-icon { font-size: 2.5rem; margin-bottom: 15px; }
+.service-card h3 { color: var(--primary); margin-bottom: 10px; }
+.link-text { display: inline-block; margin-top: 15px; color: var(--accent); font-weight: 600; font-size: 0.9rem; }
+
+/* 8. Projects */
+.projects-bg { background: var(--bg-light); }
+.project-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px; }
+.project-tile { position: relative; overflow: hidden; border-radius: var(--radius); margin: 0; box-shadow: var(--shadow); aspect-ratio: 4/3; }
+.project-tile img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+.project-tile:hover img { transform: scale(1.05); }
+.project-tile figcaption {
+    position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(15, 23, 42, 0.85);
+    color: white; padding: 10px 15px; font-size: 0.9rem;
+}
+.project-tile figcaption strong { display: block; color: var(--accent); }
+/* --- Home Page Project Categories --- */
+.project-split {
+    display: flex;
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.category-card {
+    flex: 1;
+    position: relative;
+    height: 350px;
+    border-radius: var(--radius);
+    overflow: hidden;
+    text-decoration: none;
+    box-shadow: var(--shadow);
+}
+
+.category-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.category-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 30px;
+}
+
+.category-card h3 {
+    color: white;
+    font-size: 2rem;
+    margin-bottom: 5px;
+}
+
+.category-card p {
+    color: var(--accent);
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+}
+
+.category-card:hover img {
+    transform: scale(1.1);
+}
+
+@media (max-width: 768px) {
+    .project-split {
+        flex-direction: column;
+    }
+    .category-card {
+        height: 250px;
+    }
+}
+
+/* 9. Process Steps */
+.process-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 30px; text-align: center; }
+.step-number { 
+    font-size: 2.5rem; font-weight: 700; color: rgba(15, 23, 42, 0.1); margin-bottom: 10px; font-family: var(--font-heading);
+}
+
+/* 10. Reviews */
+.reviews-bg { background: var(--bg-light); }
+.review-card { background: white; padding: 30px; border-radius: var(--radius); box-shadow: var(--shadow); border-left: 4px solid var(--accent); }
+.stars { color: #fbbf24; margin-bottom: 10px; letter-spacing: 2px; }
+.review-card p { font-style: italic; margin-bottom: 15px; }
+.review-card cite { font-weight: 600; color: var(--primary); font-style: normal; }
+
+/* 11. FAQ Accordion */
+.faq-container { max-width: 800px; }
+.accordion-btn {
+    background: white; color: var(--primary); cursor: pointer; padding: 18px; width: 100%; text-align: left;
+    border: 1px solid var(--border); border-bottom: none; outline: none; transition: 0.3s;
+    font-weight: 600; display: flex; justify-content: space-between; align-items: center;
+}
+.accordion-btn:first-of-type { border-top-left-radius: var(--radius); border-top-right-radius: var(--radius); }
+.accordion-btn:last-of-type { border-bottom: 1px solid var(--border); }
+.accordion-panel {
+    padding: 0 18px; background-color: white; max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out;
+    border-left: 1px solid var(--border); border-right: 1px solid var(--border);
+}
+.accordion-btn.active { background-color: var(--bg-light); color: var(--accent); }
+.accordion-btn.active + .accordion-panel { border-bottom: 1px solid var(--border); padding-bottom: 15px; padding-top: 15px;}
+
+/* 12. Contact Form */
+.contact-section { background: var(--primary); color: white; }
+.contact-wrapper { 
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    grid-template-areas:
+        "info form"
+        "map form";
+}
+.contact-info { 
+    grid-area: info;
+}
+.contact-form-wrapper { 
+    grid-area: form;
+    background: white; 
+    padding: 30px; 
+    border-radius: var(--radius); 
+    color: var(--text);
+}
+.contact-info h2, .contact-info p { color: white; }
+.contact-list { list-style: none; margin-top: 30px; }
+.contact-list li { margin-bottom: 15px; font-size: 1.1rem; }
+.contact-list a { color: var(--accent); text-decoration: none; }
+
+/* Contact Map Styling */
+.contact-map { 
+    grid-area: map;
+}
+
+.map-embed {
+    border-radius: 0;
+    overflow: hidden;
+    position: relative;
+}
+
+.map-embed iframe { 
+    display: block; 
+    width: 100%;
+    height: 250px;
+}
+
+.form-group { margin-bottom: 20px; }
+.form-group label { display: block; margin-bottom: 8px; font-weight: 500; font-size: 0.9rem; }
+.form-group input, .form-group select, .form-group textarea {
+    width: 100%; padding: 12px; border: 1px solid var(--border); border-radius: 4px; font-family: inherit;
+}
+.form-group input:focus { outline: 2px solid var(--accent); border-color: transparent; }
+
+/* 13. Footer */
+/* 13. Footer */
+.site-footer { 
+    background: #0f172a; 
+    border-top: 1px solid #1e293b; 
+    color: #94a3b8; 
+    padding: 60px 0 20px; 
+    font-size: 0.9rem; 
+}
+
+.footer-grid { 
+    display: grid; 
+    /* This ensures 4 columns on desktop, auto-wrapping on smaller screens */
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); 
+    gap: 40px; 
+    margin-bottom: 40px; 
+    align-items: start;
+}
+
+.footer-col h3 { color: white; margin-bottom: 15px; font-size: 1.5rem; }
+.footer-col h4 { color: white; margin-bottom: 15px; text-transform: uppercase; font-size: 1rem; letter-spacing: 1px; }
+.footer-col ul { list-style: none; padding: 0; }
+.footer-col ul li { margin-bottom: 10px; }
+.footer-col a { color: #94a3b8; text-decoration: none; transition: 0.2s; }
+.footer-col a:hover { color: var(--accent); }
+
+/* Map Styles */
+.map-container {
+    overflow: hidden;
+    border-radius: var(--radius);
+    border: 2px solid #1e293b; /* Subtle border to blend with footer */
+    height: 200px;
+    width: 100%;
+}
+
+.map-container iframe {
+    width: 100%;
+    height: 100%;
+    filter: grayscale(20%); /* Optional: makes map look slightly more professional/muted */
+    transition: filter 0.3s;
+}
+
+.map-container:hover iframe {
+    filter: grayscale(0%); /* Full color on hover */
+}
+
+.footer-bottom { 
+    text-align: center; 
+    border-top: 1px solid #1e293b; 
+    padding-top: 20px; 
+    margin-top: 40px;
+}
+
+/* 14. Mobile Sticky Bar */
+.mobile-sticky-bar {
+    position: fixed; bottom: 0; left: 0; width: 100%; height: 60px; background: white;
+    display: flex; box-shadow: 0 -2px 10px rgba(0,0,0,0.1); z-index: 999;
+}
+.sticky-btn {
+    flex: 1; display: flex; align-items: center; justify-content: center;
+    text-decoration: none; font-weight: 700; text-transform: uppercase;
+}
+.sticky-btn.phone { background: white; color: var(--primary); }
+.sticky-btn.quote { background: var(--accent); color: white; }
+
+/* 15. Animations */
+.fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+
+/* 16. Media Queries */
+@media (min-width: 769px) {
+    .mobile-sticky-bar { display: none; }
+    body { padding-bottom: 0; }
+}
+@media (max-width: 768px) {
+    .mobile-toggle { display: block; z-index: 1001; }
+    .main-nav {
+        position: fixed; top: 0; right: -100%; width: 80%; max-width: 300px; height: 100vh;
+        background: white; box-shadow: -5px 0 15px rgba(0,0,0,0.1); transition: 0.3s ease; padding-top: 80px;
+    }
+    .main-nav.active { right: 0; }
+    .nav-list { flex-direction: column; align-items: flex-start; padding: 0 30px; }
+    .hero h1 { font-size: 2rem; }
+}
+
+/* --- ADD THIS TO BOTTOM OF STYLE.CSS --- */
+
+/* Service Page Specific Styles */
+
+/* 1. Shorter Hero for Service Pages */
+.page-hero {
+    position: relative;
+    height: 60vh; /* Shorter than home page */
+    min-height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    background: #1e293b; /* Fallback color */
+}
+
+/* Ensure background image covers full area */
+.page-hero .hero-bg {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    z-index: 0;
+}
+
+.page-hero .hero-content {
+    z-index: 1;
+    position: relative;
+}
+
+/* 2. Check List Styling */
+.check-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+}
+.check-list li {
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    padding-left: 30px;
+}
+.check-list li::before {
+    content: '✓';
+    color: var(--accent);
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+}
+
+/* 3. Process List (Ordered) */
+.process-list {
+    margin-left: 20px;
+    margin-top: 20px;
+}
+.process-list li {
+    margin-bottom: 15px;
+    padding-left: 10px;
+}
+
+/* 4. Layout Helpers */
+.grid-2-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+}
+.bg-light {
+    background-color: var(--bg-light);
+}
+.img-rounded {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+}
+
+/* Mobile responsive fix for grid */
+@media (max-width: 768px) {
+    .grid-2-col {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* --- Dropdown Menu Styles --- */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #ffffff;
+    min-width: 200px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1000;
+    border-radius: 4px;
+    top: 100%;
+    left: 0;
+}
+
+.dropdown-content a {
+    color: var(--text);
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    font-size: 0.95rem;
+    border-bottom: 1px solid #eee;
+    transition: background 0.2s;
+}
+
+.dropdown-content a:hover {
+    background-color: var(--bg-light);
+    color: var(--accent);
+}
+
+/* Show dropdown on hover (Desktop) */
+.dropdown:hover .dropdown-content {
+    display: block;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Mobile Dropdown */
+@media (max-width: 768px) {
+    .dropdown-content {
+        position: static;
+        box-shadow: none;
+        padding-left: 20px;
+        display: none;
+    }
+    
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+}
+
+/* --- Photo Service Cards --- */
+.photo-card {
+    background: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px; /* Slight rounding like the example */
+    padding: 30px 20px;
+    text-align: center;
+    text-decoration: none;
+    color: var(--text);
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    height: 100%; /* Makes all cards same height */
+}
+
+.photo-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+    border-color: var(--accent);
+}
+
+.photo-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: #000; /* Dark title */
+    font-weight: 500;
+}
+
+.card-image {
+    width: 100%;
+    height: 200px; /* Fixed height ensures alignment */
+    margin-bottom: 20px;
+    overflow: hidden;
+    border-radius: 2px;
+}
+
+.card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures image fills box without stretching */
+    transition: transform 0.5s ease;
+}
+
+.photo-card:hover .card-image img {
+    transform: scale(1.05); /* Slight zoom on hover */
+}
+
+.photo-card p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: #555;
+    margin-bottom: 25px;
+    flex-grow: 1; /* Pushes button to bottom */
+}
+
+/* The "Learn More" Button Style */
+.btn-text {
+    display: inline-block;
+    padding: 10px 25px;
+    border: 2px solid var(--primary); /* Dark border */
+    color: var(--primary);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    transition: all 0.3s ease;
+}
+
+.photo-card:hover .btn-text {
+    background: var(--primary);
+    color: #fff;
+}
+
+/* --- Gallery Grid --- */
+.gallery-grid, .project-grid {
+    display: grid; 
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); 
+    gap: 20px;
+    padding: 20px 0;
+}
+
+.gallery-item, .project-tile {
+    position: relative;
+    height: 250px;
+    overflow: hidden;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.gallery-item img, .project-tile img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+    display: block;
+}
+
+.gallery-item:hover img, .project-tile:hover img {
+    transform: scale(1.05);
+}
+
+/* --- Lightbox Modal --- */
+.lightbox,
+.lightbox-modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    overflow: hidden;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+}
+
+.lightbox.show,
+.lightbox-modal.show {
+    display: flex;
+}
+
+.lightbox-content {
+    max-width: min(1100px, 90vw);
+    max-height: 85vh;
+    border-radius: 6px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+    object-fit: contain;
+    display: block;
+}
+
+.lightbox-caption,
+#caption {
+    color: #fff;
+    text-align: center;
+    margin-top: 12px;
+    font-size: 0.95rem;
+}
+
+/* Close Button */
+.close-lightbox {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 10000;
+    transition: color 0.2s;
+}
+
+.close-lightbox:hover {
+    color: var(--accent);
+}
+
+/* Navigation Arrows */
+.lightbox-prev,
+.lightbox-next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 16px;
+    color: white;
+    font-weight: bold;
+    font-size: 30px;
+    transition: 0.3s ease;
+    user-select: none;
+    z-index: 10000;
+    background: rgba(0,0,0,0.4);
+    border-radius: 3px;
+}
+
+.lightbox-next { right: 10px; }
+.lightbox-prev { left: 10px; }
+
+.lightbox-prev:hover,
+.lightbox-next:hover {
+    background-color: rgba(0,0,0,0.8);
+}
+
+@media (max-width: 768px) {
+    /* Mobile Gallery: 2 columns, shorter height */
+    .gallery-grid, .project-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        padding: 10px 0;
+    }
+    
+    .gallery-item, .project-tile {
+        height: 150px;
+    }
+    
+    .lightbox,
+    .lightbox-modal {
+        padding: 12px;
+    }
+    
+    .lightbox-content {
+        max-width: 95vw;
+        max-height: 80vh;
+    }
+    
+    .lightbox-prev,
+    .lightbox-next {
+        font-size: 22px;
+        padding: 10px;
+    }
+    
+    .close-lightbox {
+        font-size: 32px;
+        top: 10px;
+        right: 15px;
+    }
+}
+
+/* --- MASONRY GALLERY STYLE (The "Puzzle" Look) --- */
+.masonry-grid {
+    display: grid;
+    /* Create a grid with auto-filling columns of about 250px wide */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    /* Dense packing fills in the holes left by larger items */
+    grid-auto-flow: dense; 
+    gap: 15px;
+    padding: 20px 0;
+}
+
+.masonry-item {
+    margin: 0;
+    position: relative;
+    overflow: hidden;
+    border-radius: 4px;
+    cursor: pointer;
+    /* Default height for standard images */
+    height: 250px; 
+}
+
+.masonry-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+    display: block;
+}
+
+.masonry-item:hover img {
+    transform: scale(1.05);
+}
+
+/* --- SPAN CLASSES (To create the puzzle pieces) --- */
+
+/* Wide: Spans 2 columns */
+.masonry-item.wide {
+    grid-column: span 2;
+}
+
+/* Tall: Spans 2 rows (makes it 500px + gap tall) */
+.masonry-item.tall {
+    grid-row: span 2;
+    height: 515px; /* 250 + 250 + 15 gap */
+}
+
+/* Big: Spans 2 columns AND 2 rows */
+.masonry-item.big {
+    grid-column: span 2;
+    grid-row: span 2;
+    height: 515px;
+}
+
+/* Mobile Adjustments: Reset everything to 1 column */
+@media (max-width: 768px) {
+    .masonry-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+    .masonry-item {
+        height: 170px;
+    }
+    .masonry-item.wide, 
+    .masonry-item.tall, 
+    .masonry-item.big {
+        grid-column: span 1;
+        grid-row: span 1;
+        height: 170px;
+    }
+    
+    /* Contact section mobile: switch to flexbox and reorder */
+    .contact-wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+        grid-template-columns: unset;
+        grid-template-areas: unset;
+    }
+    
+    .contact-info {
+        order: 1;
+    }
+    
+    .contact-form-wrapper {
+        order: 2;
+    }
+    
+    .contact-map {
+        order: 3;
+    }
+    
+    .map-embed iframe {
+        height: 220px;
+    }
+}

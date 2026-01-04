@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+# Avoid indexing extracted text copies of PDFs
+Disallow: /assets/docs/*.txt
+
+# Optional: block internal partials if accessible
+Disallow: /partials/
+
+Sitemap: https://virasatconcrete.ca/sitemap.xml
