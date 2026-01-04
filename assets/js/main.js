@@ -114,7 +114,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         // Navigate images
-        window.changeImage = function(direction) {
+        const changeImage = (direction) => {
             currentIndex += direction;
             if (currentIndex >= images.length) currentIndex = 0;
             else if (currentIndex < 0) currentIndex = images.length - 1;
@@ -122,6 +122,14 @@ document.addEventListener('DOMContentLoaded', () => {
             lightboxImg.src = images[currentIndex].src;
             if (caption) caption.innerHTML = images[currentIndex].alt || "Project Image";
         };
+
+        const prevBtn = document.querySelector('.lightbox-prev');
+        const nextBtn = document.querySelector('.lightbox-next');
+        if (prevBtn) prevBtn.addEventListener('click', () => changeImage(-1));
+        if (nextBtn) nextBtn.addEventListener('click', () => changeImage(1));
+
+        // Backwards compatibility (in case older markup still calls changeImage)
+        window.changeImage = changeImage;
 
         // Keyboard navigation
         document.addEventListener('keydown', (e) => {

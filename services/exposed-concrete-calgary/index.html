@@ -5,14 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
     <link rel="preconnect" href="https://www.google-analytics.com" crossorigin>
-        <!-- Google tag (gtag.js) -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-806120QPJS"></script>
-        <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-806120QPJS');
-        </script>
+    <!-- Google tag (gtag.js) -->
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-806120QPJS');
+
+        (function() {
+            const id = 'G-806120QPJS';
+            const load = () => {
+                if (window.__gaLoaded) return;
+                window.__gaLoaded = true;
+                const s = document.createElement('script');
+                s.async = true;
+                s.src = 'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(id);
+                document.head.appendChild(s);
+            };
+
+            if ('requestIdleCallback' in window) {
+                requestIdleCallback(load, { timeout: 2500 });
+            } else {
+                setTimeout(load, 1500);
+            }
+        })();
+    </script>
         <link rel="icon" href="/favicon.ico" sizes="any">
         <link rel="icon" type="image/png" href="/assets/images/favicon.png">
         <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png">
@@ -250,8 +267,8 @@
     <!-- Lightbox Modal -->
     <div id="myLightbox" class="lightbox-modal">
         <span class="close-lightbox">&times;</span>
-        <a class="lightbox-prev" onclick="changeImage(-1)">&#10094;</a>
-        <a class="lightbox-next" onclick="changeImage(1)">&#10095;</a>
+        <button type="button" class="lightbox-prev" aria-label="Previous image">&#10094;</button>
+        <button type="button" class="lightbox-next" aria-label="Next image">&#10095;</button>
         <img class="lightbox-content" id="lightboxImg">
         <div id="caption" class="lightbox-caption"></div>
     </div>

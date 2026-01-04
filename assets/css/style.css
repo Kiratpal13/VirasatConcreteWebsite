@@ -47,8 +47,9 @@ h2 { font-size: 2rem; margin-bottom: 1rem; }
     cursor: pointer;
     border: none;
 }
-.btn-primary { background: var(--accent); color: white; }
+.btn-primary { background: var(--accent); color: var(--primary); }
 .btn-primary:hover { background: var(--accent-hover); transform: translateY(-2px); }
+.btn-primary:hover { color: var(--primary); }
 .btn-outline-white { border: 2px solid white; color: white; margin-left: 10px; }
 .btn-outline-white:hover { background: white; color: var(--primary); }
 .full-width { width: 100%; text-align: center; }
@@ -318,7 +319,7 @@ h2 { font-size: 2rem; margin-bottom: 1rem; }
     text-decoration: none; font-weight: 700; text-transform: uppercase;
 }
 .sticky-btn.phone { background: white; color: var(--primary); }
-.sticky-btn.quote { background: var(--accent); color: white; }
+.sticky-btn.quote { background: var(--accent); color: var(--primary); }
 
 /* 15. Animations */
 .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
@@ -656,6 +657,10 @@ h2 { font-size: 2rem; margin-bottom: 1rem; }
     z-index: 10000;
     background: rgba(0,0,0,0.4);
     border-radius: 3px;
+    border: none;
+    appearance: none;
+    -webkit-appearance: none;
+    line-height: 1;
 }
 
 .lightbox-next { right: 10px; }
