@@ -801,3 +801,202 @@ h2 { font-size: 2rem; margin-bottom: 1rem; }
         height: 220px;
     }
 }
+
+/* Thank You Page Styles */
+.thank-you-section {
+    padding: 100px 0 80px;
+    background: linear-gradient(135deg, var(--bg-light) 0%, var(--bg-white) 100%);
+    min-height: calc(100vh - 200px);
+    display: flex;
+    align-items: center;
+}
+
+.thank-you-content {
+    text-align: center;
+}
+
+.thank-you-icon {
+    font-size: 5rem;
+    color: var(--accent);
+    margin-bottom: 20px;
+    animation: scaleIn 0.6s ease-out;
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.thank-you-section h1 {
+    font-size: 3rem;
+    margin-bottom: 15px;
+    color: var(--primary);
+}
+
+.thank-you-message {
+    font-size: 1.3rem;
+    color: var(--text);
+    margin-bottom: 50px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.thank-you-details {
+    background: var(--bg-white);
+    border: 2px solid var(--border);
+    border-radius: var(--radius);
+    padding: 40px;
+    margin-bottom: 50px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.thank-you-details h2 {
+    margin-bottom: 30px;
+    font-size: 1.8rem;
+}
+
+.next-steps {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.next-steps li {
+    display: flex;
+    gap: 20px;
+    text-align: left;
+    align-items: flex-start;
+}
+
+.step-number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    background: var(--accent);
+    color: var(--primary);
+    border-radius: 50%;
+    font-weight: 700;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+.step-content h3 {
+    margin-bottom: 8px;
+    color: var(--primary);
+    font-size: 1.1rem;
+}
+
+.step-content p {
+    color: var(--text);
+    font-size: 0.95rem;
+}
+
+.thank-you-contact {
+    margin-bottom: 40px;
+}
+
+.thank-you-contact h3 {
+    font-size: 1.3rem;
+    margin-bottom: 25px;
+}
+
+.contact-methods {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.contact-method {
+    text-align: center;
+}
+
+.contact-method strong {
+    display: block;
+    color: var(--primary);
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.contact-method a,
+.contact-method p {
+    color: var(--accent);
+    font-size: 1.1rem;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.contact-method a:hover {
+    color: var(--accent-hover);
+}
+
+.thank-you-actions {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.thank-you-actions .btn {
+    padding: 14px 32px;
+    font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+    .thank-you-icon {
+        font-size: 4rem;
+    }
+
+    .thank-you-section h1 {
+        font-size: 2rem;
+    }
+
+    .thank-you-message {
+        font-size: 1.1rem;
+    }
+
+    .thank-you-details {
+        padding: 30px 20px;
+    }
+
+    .thank-you-details h2 {
+        font-size: 1.4rem;
+    }
+
+    .next-steps li {
+        gap: 15px;
+    }
+
+    .step-number {
+        width: 45px;
+        height: 45px;
+        font-size: 1rem;
+    }
+
+    .contact-methods {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .thank-you-actions {
+        flex-direction: column;
+    }
+
+    .thank-you-actions .btn {
+        width: 100%;
+    }
+}
