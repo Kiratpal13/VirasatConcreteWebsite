@@ -31,7 +31,7 @@ h1 { font-size: 2.5rem; line-height: 1.2; }
 h2 { font-size: 2rem; margin-bottom: 1rem; }
 
 .container { width: 90%; max-width: 1200px; margin: 0 auto; padding: 0 15px; }
-.section { padding: 80px 0; }
+.section { padding: 80px 0; content-visibility: auto; contain-intrinsic-size: 800px; }
 .section-header { text-align: center; margin-bottom: 50px; max-width: 700px; margin-left: auto; margin-right: auto; }
 
 /* 3. Utility Classes */
@@ -90,6 +90,10 @@ h2 { font-size: 2rem; margin-bottom: 1rem; }
 .hero-content { position: relative; z-index: 1; }
 .hero-content h1 { color: #ffffff; text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.8); }
 .hero-sub { font-size: 1.2rem; max-width: 600px; margin: 15px auto 30px; color: #ffffff; text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8); }
+
+@media (max-width: 768px) {
+    .hero { height: 70vh; min-height: 420px; }
+}
 
 /* 6. Trust Bar */
 .trust-bar { background: var(--primary); color: white; padding: 20px 0; font-size: 0.9rem; }
