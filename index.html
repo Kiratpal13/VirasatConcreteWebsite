@@ -593,8 +593,24 @@
         <a href="#contact" class="sticky-btn quote">Get Quote</a>
     </div>
 
-    <!-- Scripts -->
-    <script src="assets/js/main.js" defer></script>
+    <!-- Scripts (deferred on idle) -->
+    <script>
+        (function() {
+            const load = () => {
+                if (window.__mainLoaded) return;
+                window.__mainLoaded = true;
+                const s = document.createElement('script');
+                s.src = 'assets/js/main.js';
+                s.async = true;
+                document.body.appendChild(s);
+            };
+            if ('requestIdleCallback' in window) {
+                requestIdleCallback(load, { timeout: 2500 });
+            } else {
+                setTimeout(load, 1500);
+            }
+        })();
+    </script>
 
     <!-- Lightbox Modal -->
     <div id="myLightbox" class="lightbox-modal">
