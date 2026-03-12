@@ -198,9 +198,9 @@ h2 { font-size: 2rem; margin-bottom: 1rem; }
 /* 11. FAQ Accordion */
 .faq-container { max-width: 800px; }
 .accordion-btn {
-    background: white; color: var(--primary); cursor: pointer; padding: 18px; width: 100%; text-align: left;
+    background: white; color: var(--primary); cursor: pointer; padding: 20px 18px; width: 100%; text-align: left;
     border: 1px solid var(--border); border-bottom: none; outline: none; transition: 0.3s;
-    font-weight: 600; display: flex; justify-content: space-between; align-items: center;
+    font-weight: 600; display: flex; justify-content: space-between; align-items: center; gap: 16px; min-height: 48px;
 }
 .accordion-btn:first-of-type { border-top-left-radius: var(--radius); border-top-right-radius: var(--radius); }
 .accordion-btn:last-of-type { border-bottom: 1px solid var(--border); }
