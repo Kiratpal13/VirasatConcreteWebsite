@@ -643,7 +643,7 @@
         <a href="#contact" class="sticky-btn quote">Get Quote</a>
     </div>
 
-    <!-- Scripts (deferred until DOMContentLoaded) -->
+    <!-- Scripts (load immediately on DOMContentLoaded for mobile functionality) -->
     <script>
         (function() {
             const load = () => {
@@ -653,14 +653,11 @@
                 s.src = 'assets/js/main.js';
                 document.body.appendChild(s);
             };
+            // Load immediately when DOM is ready, not deferred
             if (document.readyState === 'loading') {
                 document.addEventListener('DOMContentLoaded', load);
             } else {
-                if ('requestIdleCallback' in window) {
-                    requestIdleCallback(load, { timeout: 1000 });
-                } else {
-                    setTimeout(load, 50);
-                }
+                load();
             }
         })();
     </script>
