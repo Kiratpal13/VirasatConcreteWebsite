@@ -326,8 +326,8 @@ h2 { font-size: 2rem; margin-bottom: 1rem; }
 .sticky-btn.quote { background: var(--accent); color: var(--primary); }
 
 /* 15. Animations */
-.fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
-.fade-in.visible { opacity: 1; transform: translateY(0); }
+.fade-in { opacity: 1; transform: none; transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+.fade-in.visible { opacity: 1; transform: none; }
 
 /* 16. Media Queries */
 @media (min-width: 769px) {
