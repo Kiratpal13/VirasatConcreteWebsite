@@ -651,8 +651,7 @@
                 window.__mainLoaded = true;
                 const s = document.createElement('script');
                 s.src = 'assets/js/main.js';
-                s.defer = true;
-                document.head.appendChild(s);
+                document.body.appendChild(s);
             };
             if (document.readyState === 'loading') {
                 document.addEventListener('DOMContentLoaded', load);
