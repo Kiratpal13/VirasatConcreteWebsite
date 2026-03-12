@@ -1,79 +1,99 @@
-document.addEventListener('DOMContentLoaded', () => {
-    
-    // --- 1. MOBILE MENU ---
+// Initialize mobile menu immediately if DOM is ready, otherwise wait
+function initMobileMenu() {
     const mobileToggle = document.querySelector('.mobile-toggle');
     const mainNav = document.querySelector('.main-nav');
     
-    if (mobileToggle) {
-        mobileToggle.addEventListener('click', () => {
-            const isExpanded = mobileToggle.getAttribute('aria-expanded') === 'true';
-            mobileToggle.setAttribute('aria-expanded', !isExpanded);
-            mainNav.classList.toggle('active');
-        });
-
-        // Close menu when clicking a link
-        document.querySelectorAll('.nav-list a').forEach(link => {
-            link.addEventListener('click', () => {
-                mainNav.classList.remove('active');
-                mobileToggle.setAttribute('aria-expanded', 'false');
-            });
-        });
+    if (!mobileToggle || !mainNav) {
+        console.warn('Mobile toggle or main nav not found');
+        return;
     }
-
-    // --- 2. DROPDOWN (MOBILE) ---
-    const dropdowns = document.querySelectorAll('.dropdown');
-    dropdowns.forEach(dropdown => {
-        const toggle = dropdown.querySelector('.dropdown-toggle') || dropdown.querySelector('.dropbtn') || dropdown.querySelector('a');
-        if (!toggle) return;
-        
-        toggle.addEventListener('click', (e) => {
-            if (window.innerWidth <= 768) { 
-                e.preventDefault(); 
-                // Close other dropdowns
-                dropdowns.forEach(d => { if(d !== dropdown) d.querySelector('.dropdown-content').style.display = 'none'; });
-                
-                // Toggle current
-                const content = dropdown.querySelector('.dropdown-content');
-                if(content.style.display === 'block') {
-                    content.style.display = 'none';
-                } else {
-                    content.style.display = 'block';
-                }
-            }
-        });
+    
+    mobileToggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isExpanded = mobileToggle.getAttribute('aria-expanded') === 'true';
+        mobileToggle.setAttribute('aria-expanded', !isExpanded);
+        mainNav.classList.toggle('active');
     });
 
-    // --- 3. FAQ ACCORDION ---
-    const accordions = document.querySelectorAll('.accordion-btn');
-    accordions.forEach(acc => {
-        acc.addEventListener('click', function() {
-            this.classList.toggle('active');
-            const panel = this.nextElementSibling;
-            const icon = this.querySelector('.icon');
+    // Close menu when clicking a link
+    document.querySelectorAll('.nav-list a').forEach(link => {
+        link.addEventListener('click', () => {
+            mainNav.classList.remove('active');
+            mobileToggle.setAttribute('aria-expanded', 'false');
+        });
+    });
+    
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!e.target.closest('.site-header')) {
+            mainNav.classList.remove('active');
+            mobileToggle.setAttribute('aria-expanded', 'false');
+        }
+    });
+}
+
+// Run on DOMContentLoaded if not already loaded
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initMobileMenu);
+} else {
+    initMobileMenu();
+}
+
+// --- 2. DROPDOWN (MOBILE) ---
+const dropdowns = document.querySelectorAll('.dropdown');
+dropdowns.forEach(dropdown => {
+    const toggle = dropdown.querySelector('.dropdown-toggle') || dropdown.querySelector('.dropbtn') || dropdown.querySelector('a');
+    if (!toggle) return;
+    
+    toggle.addEventListener('click', (e) => {
+        if (window.innerWidth <= 768) { 
+            e.preventDefault(); 
+            // Close other dropdowns
+            dropdowns.forEach(d => { if(d !== dropdown) d.querySelector('.dropdown-content').style.display = 'none'; });
             
-            if (panel.style.maxHeight) {
-                panel.style.maxHeight = null;
-                this.setAttribute('aria-expanded', 'false');
-                if(icon) icon.textContent = '+';
+            // Toggle current
+            const content = dropdown.querySelector('.dropdown-content');
+            if(content.style.display === 'block') {
+                content.style.display = 'none';
             } else {
-                panel.style.maxHeight = panel.scrollHeight + "px";
-                this.setAttribute('aria-expanded', 'true');
-                if(icon) icon.textContent = '-';
+                content.style.display = 'block';
             }
-        });
+        }
     });
+});
 
-    // --- 4. SCROLL ANIMATION ---
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-            }
-        });
+// --- 3. FAQ ACCORDION ---
+const accordions = document.querySelectorAll('.accordion-btn');
+accordions.forEach(acc => {
+    acc.addEventListener('click', function() {
+        this.classList.toggle('active');
+        const panel = this.nextElementSibling;
+        const icon = this.querySelector('.icon');
+        
+        if (panel.style.maxHeight) {
+            panel.style.maxHeight = null;
+            this.setAttribute('aria-expanded', 'false');
+            if(icon) icon.textContent = '+';
+        } else {
+            panel.style.maxHeight = panel.scrollHeight + "px";
+            this.setAttribute('aria-expanded', 'true');
+            if(icon) icon.textContent = '-';
+        }
     });
-    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+});
 
-    // --- 5. LIGHTBOX (GALLERY POPUP) ---
+// --- 4. SCROLL ANIMATION ---
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+        }
+    });
+});
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+// --- 5. LIGHTBOX (GALLERY POPUP) ---
+document.addEventListener('DOMContentLoaded', () => {
     const lightbox = document.getElementById('myLightbox');
     const lightboxImg = document.getElementById('lightboxImg');
     const caption = document.getElementById('caption');
