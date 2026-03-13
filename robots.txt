@@ -6,5 +6,6 @@ Disallow: /assets/docs/*.txt
 
 # Optional: block internal partials if accessible
 Disallow: /partials/
+Disallow: /blog-scheduled/
 
 Sitemap: https://virasatconcrete.ca/sitemap.xml
