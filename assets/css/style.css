@@ -82,7 +82,6 @@ h2 { font-size: 2rem; margin-bottom: 1rem; }
     padding: 12px;
     min-width: 48px;
     min-height: 48px;
-    display: flex;
     align-items: center;
     justify-content: center;
     z-index: 1001;
