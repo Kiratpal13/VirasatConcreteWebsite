@@ -14,7 +14,6 @@ function initMobileMenu() {
         mobileToggle.setAttribute('aria-expanded', !isExpanded);
         mainNav.classList.toggle('active');
     });
-
     // Close menu when clicking a link
     document.querySelectorAll('.nav-list a').forEach(link => {
         link.addEventListener('click', () => {
@@ -32,11 +31,96 @@ function initMobileMenu() {
     });
 }
 
+function buildQuoteMailtoUrl(form) {
+    const getFieldValue = (selector) => {
+        const field = form.querySelector(selector);
+        return field ? field.value.trim() : '';
+    };
+
+    const name = getFieldValue('#name') || 'Not provided';
+    const email = getFieldValue('#email') || 'Not provided';
+    const phone = getFieldValue('#phone') || 'Not provided';
+    const area = getFieldValue('#area') || 'Not provided';
+    const service = getFieldValue('#service') || 'Not provided';
+    const message = getFieldValue('#message') || 'Not provided';
+
+    const subject = encodeURIComponent('Quote Request - Virasat Concrete');
+    const body = encodeURIComponent(
+        [
+            'New quote request',
+            '',
+            `Name: ${name}`,
+            `Email: ${email}`,
+            `Phone: ${phone}`,
+            `Project Location: ${area}`,
+            `Service Needed: ${service}`,
+            '',
+            'Project Details:',
+            message
+        ].join('\n')
+    );
+
+    return `mailto:info@virasatconcrete.ca?subject=${subject}&body=${body}`;
+}
+
+function initQuoteFormSubmission() {
+    const form = document.getElementById('quote-form');
+
+    if (!form) {
+        return;
+    }
+
+    const submitButton = form.querySelector('button[type="submit"]');
+    const redirectInput = form.querySelector('input[name="redirect"]');
+
+    form.addEventListener('submit', async (event) => {
+        event.preventDefault();
+
+        const originalButtonText = submitButton ? submitButton.textContent : '';
+
+        if (submitButton) {
+            submitButton.disabled = true;
+            submitButton.textContent = 'Sending...';
+        }
+
+        try {
+            const response = await fetch(form.action, {
+                method: 'POST',
+                body: new FormData(form),
+                headers: {
+                    Accept: 'application/json'
+                }
+            });
+
+            const result = await response.json();
+
+            if (response.ok && result.success) {
+                window.location.href = redirectInput ? redirectInput.value : '/thank-you/';
+                return;
+            }
+
+            throw new Error(result.message || 'Form submission failed');
+        } catch (error) {
+            console.error('Quote form submission failed:', error);
+            window.location.href = buildQuoteMailtoUrl(form);
+        } finally {
+            if (submitButton) {
+                submitButton.disabled = false;
+                submitButton.textContent = originalButtonText;
+            }
+        }
+    });
+}
+
 // Run on DOMContentLoaded if not already loaded
 if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initMobileMenu);
+    document.addEventListener('DOMContentLoaded', () => {
+        initMobileMenu();
+        initQuoteFormSubmission();
+    });
 } else {
     initMobileMenu();
+    initQuoteFormSubmission();
 }
 
 // --- 2. DROPDOWN (MOBILE) ---

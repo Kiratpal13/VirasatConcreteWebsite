@@ -533,12 +533,12 @@
                 </div>
 
                 <div class="contact-form-wrapper fade-in">
-                    <form action="https://formsubmit.co/info@virasatconcrete.ca" method="POST" id="quote-form">
-                        <input type="hidden" name="_subject" value="New Quote Request — Virasat Concrete">
-                        <input type="hidden" name="_template" value="table">
-                        <input type="hidden" name="_captcha" value="false">
-                        <input type="hidden" name="_next" value="https://virasatconcrete.ca/thank-you/">
-                        <input type="text" name="_honey" style="display:none">
+                    <form action="https://api.web3forms.com/submit" method="POST" id="quote-form">
+                        <input type="hidden" name="access_key" value="REPLACE_WITH_WEB3FORMS_ACCESS_KEY">
+                        <input type="hidden" name="subject" value="New Quote Request — Virasat Concrete">
+                        <input type="hidden" name="from_name" value="Virasat Concrete Website">
+                        <input type="hidden" name="redirect" value="https://virasatconcrete.ca/thank-you/">
+                        <input type="checkbox" name="botcheck" style="display:none">
                         <div class="form-group">
                             <label for="name">Full Name</label>
                             <input type="text" id="name" name="name" required placeholder="John Doe">
