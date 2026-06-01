@@ -27,28 +27,76 @@
     }
     </script>
     <style>
-        :root { --primary: #0f172a; --accent: #f97316; --text: #334155; }
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { color: var(--text); line-height: 1.7; background: white; padding-bottom: 60px; font-family: system-ui, -apple-system, sans-serif; }
-        .container { width: 90%; max-width: 900px; margin: 0 auto; padding: 0 15px; }
-        article { max-width: 800px; margin: 40px auto; }
-        h1 { font-size: 2.2rem; color: var(--primary); margin-bottom: 20px; }
-        h2 { font-size: 1.5rem; color: var(--primary); margin: 30px 0 15px; }
-        .article-meta { display: flex; gap: 20px; font-size: 0.95rem; color: #666; margin-bottom: 24px; }
-        .breadcrumb { margin-bottom: 20px; font-size: 0.9rem; }
-        .breadcrumb a { color: var(--accent); text-decoration: none; }
-        p, li { margin-bottom: 12px; }
-        ul { margin: 15px 0 15px 22px; }
+      :root { --primary: #0f172a; --accent: #f97316; --text: #334155; --bg-light: #f8fafc; }
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      html { scroll-behavior: smooth; }
+      body { color: var(--text); line-height: 1.7; background: white; padding-bottom: 60px; font-family: system-ui, -apple-system, sans-serif; }
+      h1 { font-size: 2.5rem; color: var(--primary); margin-bottom: 20px; }
+      h2 { font-size: 1.8rem; color: var(--primary); margin: 40px 0 20px; }
+      h3 { font-size: 1.3rem; color: var(--primary); margin: 25px 0 15px; }
+      .site-header { background: white; box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; }
+      .header-inner { display: flex; justify-content: space-between; align-items: center; height: 70px; }
+      .logo { font-size: 1.5rem; font-weight: 700; color: var(--primary); text-decoration: none; }
+      .container { width: 90%; max-width: 900px; margin: 0 auto; padding: 0 15px; }
+      article { max-width: 800px; margin: 40px auto; }
+      .article-meta { display: flex; gap: 20px; font-size: 0.95rem; color: #666; margin-bottom: 30px; }
+      .breadcrumb { margin-bottom: 20px; font-size: 0.9rem; }
+      .breadcrumb a { color: var(--accent); text-decoration: none; }
+      p { margin-bottom: 18px; }
+      ul, ol { margin: 20px 0 20px 30px; }
+      li { margin-bottom: 10px; }
+      .site-footer { background: #0f172a; color: #94a3b8; padding: 60px 0 20px; }
+      .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 40px; }
+      .footer-col h4 { color: white; margin-bottom: 15px; }
+      .footer-col a { color: #94a3b8; text-decoration: none; }
+      .footer-bottom { text-align: center; padding-top: 20px; border-top: 1px solid #1e293b; margin-top: 30px; }
+      .mobile-sticky-bar { position: fixed; bottom: 0; left: 0; width: 100%; height: 60px; background: white; display: flex; box-shadow: 0 -2px 10px rgba(0,0,0,0.1); z-index: 999; }
+      .sticky-btn { flex: 1; display: flex; align-items: center; justify-content: center; text-decoration: none; font-weight: 700; }
+      .sticky-btn.phone { background: white; color: var(--primary); }
+      .sticky-btn.quote { background: var(--accent); color: var(--primary); }
     </style>
-    <link rel="stylesheet" href="../../assets/css/style.css">
+    <link rel="stylesheet" href="../../assets/css/style.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="../../assets/css/style.css"></noscript>
 </head>
 <body>
-<main class="container">
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="/" class="logo">Virasat Concrete Ltd.</a>
+      <button class="mobile-toggle" aria-label="Toggle navigation"><span class="hamburger"></span></button>
+      <nav class="main-nav">
+        <ul class="nav-list">
+          <li><a href="/">Home</a></li>
+          <li class="dropdown">
+            <a href="/services/" class="dropdown-toggle">Services ▾</a>
+            <div class="dropdown-content">
+              <a href="/services/driveways-calgary/">Driveways</a>
+              <a href="/services/garage-pads-calgary/">Garage Pads</a>
+              <a href="/services/exposed-concrete-calgary/">Exposed Aggregate</a>
+              <a href="/services/concrete-patios-calgary/">Patio Pads</a>
+              <a href="/services/sidewalks-steps-calgary/">Sidewalks & Steps</a>
+              <a href="/services/custom-concrete-calgary/">Other Services</a>
+            </div>
+          </li>
+          <li><a href="/projects/">Projects</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/about/">About</a></li>
+          <li><a href="/faq/">FAQ</a></li>
+          <li><a href="/#contact" class="nav-cta-btn">Get a Quote</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
   <article>
     <div class="breadcrumb"><a href="/blog/">Blog</a> / Garage Pads</div>
     <h1>Garage Pad Prep Checklist Before You Pour</h1>
     <div class="article-meta"><span>Published: July 5, 2026</span><span>5 min read</span></div>
     <p>Most garage pad failures come from prep mistakes, not concrete itself. A strong base and proper drainage are essential for long-term performance in Calgary's climate.</p>
+
+    <h2>Why Prep Matters More Than You Think</h2>
+    <p>Concrete strength depends heavily on what's underneath. Even premium concrete can crack early if subgrade prep, compaction, or drainage is poor.</p>
+
     <h2>Prep Checklist</h2>
     <ul>
       <li>Confirm final elevations and slope away from structures</li>
@@ -57,8 +105,70 @@
       <li>Set forms square and verify dimensions</li>
       <li>Place reinforcement and control joints correctly</li>
     </ul>
+
+    <h2>Common Garage Pad Prep Mistakes</h2>
+    <ul>
+      <li>Under-compacted base that settles after the first winter</li>
+      <li>No slope, causing water to collect near the garage</li>
+      <li>Poor joint planning that leads to random cracking</li>
+      <li>Rushing pour timing during unstable weather</li>
+    </ul>
+
+    <h2>Before-Pour Quality Check</h2>
+    <p>Before concrete arrives, confirm form dimensions, reinforcement position, base firmness, and access route for placing and finishing crews. A 20-minute pre-pour check can prevent expensive post-pour issues.</p>
+
+    <h2>After-Pour Protection</h2>
+    <p>Proper curing and traffic control are critical. Keep heavy loads off the slab until the recommended cure window passes, and plan sealing after full cure based on product guidance.</p>
   </article>
 </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-col">
+        <h3>Virasat Concrete</h3>
+        <p>Professional residential and commercial concrete services in Calgary and surrounding areas. Building quality, one pour at a time.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="/services/">Services</a></li>
+          <li><a href="/projects/">Projects</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/faq/">FAQ</a></li>
+          <li><a href="/#contact">Contact</a></li>
+          <li><a href="/privacy-policy/">Privacy Policy</a></li>
+          <li><a href="/standards-of-service/">Standards of Service</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Our Services</h4>
+        <ul>
+          <li><a href="/services/driveways-calgary/">Driveways</a></li>
+          <li><a href="/services/garage-pads-calgary/">Garage Pads</a></li>
+          <li><a href="/services/concrete-patios-calgary/">Patios</a></li>
+          <li><a href="/services/sidewalks-steps-calgary/">Sidewalks & Steps</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:+15879362818">(587) 936-2818</a></li>
+          <li><a href="mailto:info@virasatconcrete.ca">info@virasatconcrete.ca</a></li>
+          <li>Calgary, AB</li>
+          <li>Mon-Sat: 7am - 7pm</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Virasat Concrete Ltd. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <div class="mobile-sticky-bar">
+    <a href="tel:+15879362818" class="sticky-btn phone">📞 Call Now</a>
+    <a href="/#contact" class="sticky-btn quote">Get Quote</a>
+  </div>
+
 <script src="../../assets/js/main.js" defer></script>
 </body>
 </html>

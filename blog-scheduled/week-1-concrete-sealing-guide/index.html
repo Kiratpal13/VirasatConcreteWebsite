@@ -43,26 +43,71 @@
     </script>
 
     <style>
-        :root { --primary: #0f172a; --accent: #f97316; --text: #334155; }
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { color: var(--text); line-height: 1.7; background: white; padding-bottom: 60px; font-family: system-ui, -apple-system, sans-serif; }
-        .container { width: 90%; max-width: 900px; margin: 0 auto; padding: 0 15px; }
-        article { max-width: 800px; margin: 40px auto; }
-        h1 { font-size: 2.2rem; color: var(--primary); margin-bottom: 20px; }
-        h2 { font-size: 1.5rem; color: var(--primary); margin: 30px 0 15px; }
-        p, li { margin-bottom: 12px; }
-        ul { margin: 15px 0 15px 22px; }
-        .article-meta { display: flex; gap: 20px; font-size: 0.95rem; color: #666; margin-bottom: 24px; }
-        .breadcrumb { margin-bottom: 20px; font-size: 0.9rem; }
-        .breadcrumb a { color: var(--accent); text-decoration: none; }
-        .cta-box { background: var(--primary); color: white; padding: 24px; border-radius: 8px; margin-top: 28px; }
-        .cta-box a { color: #fff; font-weight: 700; }
+      :root { --primary: #0f172a; --accent: #f97316; --text: #334155; --bg-light: #f8fafc; }
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      html { scroll-behavior: smooth; }
+      body { color: var(--text); line-height: 1.7; background: white; padding-bottom: 60px; font-family: system-ui, -apple-system, sans-serif; }
+      h1 { font-size: 2.5rem; color: var(--primary); margin-bottom: 20px; }
+      h2 { font-size: 1.8rem; color: var(--primary); margin: 40px 0 20px; }
+      h3 { font-size: 1.3rem; color: var(--primary); margin: 25px 0 15px; }
+      .site-header { background: white; box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; }
+      .header-inner { display: flex; justify-content: space-between; align-items: center; height: 70px; }
+      .logo { font-size: 1.5rem; font-weight: 700; color: var(--primary); text-decoration: none; }
+      .container { width: 90%; max-width: 900px; margin: 0 auto; padding: 0 15px; }
+      article { max-width: 800px; margin: 40px auto; }
+      .article-meta { display: flex; gap: 20px; font-size: 0.95rem; color: #666; margin-bottom: 30px; }
+      .breadcrumb { margin-bottom: 20px; font-size: 0.9rem; }
+      .breadcrumb a { color: var(--accent); text-decoration: none; }
+      p { margin-bottom: 18px; }
+      ul, ol { margin: 20px 0 20px 30px; }
+      li { margin-bottom: 10px; }
+      .cta-box { background: var(--primary); color: white; padding: 30px; border-radius: 8px; margin: 40px 0; text-align: center; }
+      .cta-box h3 { color: white; margin: 0 0 15px; }
+      .cta-box a { display: inline-block; background: var(--accent); color: var(--primary); padding: 12px 28px; text-decoration: none; border-radius: 4px; font-weight: 600; }
+      .site-footer { background: #0f172a; color: #94a3b8; padding: 60px 0 20px; }
+      .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 40px; }
+      .footer-col h4 { color: white; margin-bottom: 15px; }
+      .footer-col a { color: #94a3b8; text-decoration: none; }
+      .footer-bottom { text-align: center; padding-top: 20px; border-top: 1px solid #1e293b; margin-top: 30px; }
+      .mobile-sticky-bar { position: fixed; bottom: 0; left: 0; width: 100%; height: 60px; background: white; display: flex; box-shadow: 0 -2px 10px rgba(0,0,0,0.1); z-index: 999; }
+      .sticky-btn { flex: 1; display: flex; align-items: center; justify-content: center; text-decoration: none; font-weight: 700; }
+      .sticky-btn.phone { background: white; color: var(--primary); }
+      .sticky-btn.quote { background: var(--accent); color: var(--primary); }
     </style>
 
-    <link rel="stylesheet" href="../../assets/css/style.css">
+    <link rel="stylesheet" href="../../assets/css/style.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="../../assets/css/style.css"></noscript>
 </head>
 <body>
-    <main class="container">
+    <header class="site-header">
+      <div class="container header-inner">
+        <a href="/" class="logo">Virasat Concrete Ltd.</a>
+        <button class="mobile-toggle" aria-label="Toggle navigation"><span class="hamburger"></span></button>
+        <nav class="main-nav">
+          <ul class="nav-list">
+            <li><a href="/">Home</a></li>
+            <li class="dropdown">
+              <a href="/services/" class="dropdown-toggle">Services ▾</a>
+              <div class="dropdown-content">
+                <a href="/services/driveways-calgary/">Driveways</a>
+                <a href="/services/garage-pads-calgary/">Garage Pads</a>
+                <a href="/services/exposed-concrete-calgary/">Exposed Aggregate</a>
+                <a href="/services/concrete-patios-calgary/">Patio Pads</a>
+                <a href="/services/sidewalks-steps-calgary/">Sidewalks & Steps</a>
+                <a href="/services/custom-concrete-calgary/">Other Services</a>
+              </div>
+            </li>
+            <li><a href="/projects/">Projects</a></li>
+            <li><a href="/blog/">Blog</a></li>
+            <li><a href="/about/">About</a></li>
+            <li><a href="/faq/">FAQ</a></li>
+            <li><a href="/#contact" class="nav-cta-btn">Get a Quote</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main>
         <article>
             <div class="breadcrumb"><a href="/blog/">Blog</a> / Sealing Tips</div>
             <h1>7 Concrete Sealing Mistakes Calgary Homeowners Make</h1>
@@ -70,32 +115,99 @@
 
             <p>Concrete sealing is one of the best ways to protect your driveway and patio in Calgary—but only if it's done correctly. Harsh freeze-thaw cycles and de-icing salts can quickly break down unprotected surfaces.</p>
 
+          <p>Many homeowners pay for sealing but still see early scaling or cracking because a few key steps were missed. Below are the most common mistakes we see, and how to avoid them.</p>
+
             <h2>1) Sealing at the Wrong Time of Year</h2>
-            <p>The best window is late summer to early fall when weather is stable. Sealing too late in fall can lead to poor curing.</p>
+          <p>The best window is late summer to early fall when weather is stable. Sealing too late in fall can lead to poor curing, while sealing during wet spring conditions can trap moisture.</p>
+          <ul>
+            <li>Avoid sealing if rain is expected within 24-48 hours</li>
+            <li>Follow product temperature ranges closely</li>
+            <li>Plan around overnight lows, not just daytime highs</li>
+          </ul>
 
             <h2>2) Skipping Surface Preparation</h2>
-            <p>Dust, salt residue, and oil spots block sealer adhesion. Always clean, dry, and repair first.</p>
+          <p>Dust, salt residue, and oil spots block sealer adhesion. Always clean, dry, and repair first. Good prep is often 70% of a successful sealing job.</p>
+          <ul>
+            <li>Pressure wash and remove all residue</li>
+            <li>Degrease oil-stained spots</li>
+            <li>Repair visible cracks before sealing</li>
+          </ul>
 
             <h2>3) Using the Wrong Sealer</h2>
-            <p>Not all sealers perform equally in Calgary. Penetrating options are often better for freeze-thaw protection than cheap topical coatings.</p>
+          <p>Not all sealers perform equally in Calgary. Penetrating options are often better for freeze-thaw protection than low-cost topical coatings that can wear quickly in high-traffic areas.</p>
 
-            <h2>4) Applying Too Thick</h2>
-            <p>Heavy coats can trap moisture and create uneven appearance. Follow manufacturer coverage rates.</p>
+          <h2>4) Applying Too Thick</h2>
+          <p>Heavy coats can trap moisture and create uneven appearance. Follow manufacturer coverage rates and apply even coats to avoid streaking or hazing.</p>
 
-            <h2>5) Ignoring Drainage Issues</h2>
-            <p>Standing water accelerates scaling and cracking. Slope and downspout direction matter as much as the sealer itself.</p>
+          <h2>5) Ignoring Drainage Issues</h2>
+          <p>Standing water accelerates scaling and cracking. Slope and downspout direction matter as much as the sealer itself. If water pools, fix grading first.</p>
 
-            <h2>6) Waiting Too Long to Reseal</h2>
-            <p>Set a maintenance cycle and inspect each spring. Resealing before damage appears is cheaper than repairs.</p>
+          <h2>6) Waiting Too Long to Reseal</h2>
+          <p>Set a maintenance cycle and inspect each spring. Resealing before damage appears is cheaper than repairs after deterioration begins.</p>
 
             <h2>7) Choosing DIY for Complex Jobs</h2>
-            <p>Large driveways, severe wear, or premium finishes often need professional prep and application for long-term results.</p>
+          <p>Large driveways, severe wear, or premium finishes often need professional prep and application for long-term results. DIY can work for small areas, but complex projects are less forgiving.</p>
+
+          <h2>Quick Maintenance Plan for Calgary Homes</h2>
+          <ul>
+            <li><strong>Spring:</strong> inspect cracks, clean salt residue, schedule repairs</li>
+            <li><strong>Summer:</strong> monitor surface wear and drainage</li>
+            <li><strong>Early fall:</strong> seal before freeze-thaw season begins</li>
+            <li><strong>Winter:</strong> use de-icer alternatives where possible</li>
+          </ul>
 
             <div class="cta-box">
                 <p>Need help deciding the right sealer and schedule? <a href="/#contact">Request a quote</a> or read our <a href="/blog/concrete-sealing-tips-calgary/">complete sealing guide</a>.</p>
             </div>
         </article>
     </main>
+
+      <footer class="site-footer">
+        <div class="container footer-grid">
+          <div class="footer-col">
+            <h3>Virasat Concrete</h3>
+            <p>Professional residential and commercial concrete services in Calgary and surrounding areas. Building quality, one pour at a time.</p>
+          </div>
+          <div class="footer-col">
+            <h4>Quick Links</h4>
+            <ul>
+              <li><a href="/services/">Services</a></li>
+              <li><a href="/projects/">Projects</a></li>
+              <li><a href="/blog/">Blog</a></li>
+              <li><a href="/faq/">FAQ</a></li>
+              <li><a href="/#contact">Contact</a></li>
+              <li><a href="/privacy-policy/">Privacy Policy</a></li>
+              <li><a href="/standards-of-service/">Standards of Service</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Our Services</h4>
+            <ul>
+              <li><a href="/services/driveways-calgary/">Driveways</a></li>
+              <li><a href="/services/garage-pads-calgary/">Garage Pads</a></li>
+              <li><a href="/services/concrete-patios-calgary/">Patios</a></li>
+              <li><a href="/services/sidewalks-steps-calgary/">Sidewalks & Steps</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Contact</h4>
+            <ul>
+              <li><a href="tel:+15879362818">(587) 936-2818</a></li>
+              <li><a href="mailto:info@virasatconcrete.ca">info@virasatconcrete.ca</a></li>
+              <li>Calgary, AB</li>
+              <li>Mon-Sat: 7am - 7pm</li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2026 Virasat Concrete Ltd. All rights reserved.</p>
+        </div>
+      </footer>
+
+      <div class="mobile-sticky-bar">
+        <a href="tel:+15879362818" class="sticky-btn phone">📞 Call Now</a>
+        <a href="/#contact" class="sticky-btn quote">Get Quote</a>
+      </div>
 
     <script src="../../assets/js/main.js" defer></script>
 </body>

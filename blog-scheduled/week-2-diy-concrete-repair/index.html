@@ -27,43 +27,161 @@
     }
     </script>
     <style>
-        :root { --primary: #0f172a; --accent: #f97316; --text: #334155; }
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { color: var(--text); line-height: 1.7; background: white; padding-bottom: 60px; font-family: system-ui, -apple-system, sans-serif; }
-        .container { width: 90%; max-width: 900px; margin: 0 auto; padding: 0 15px; }
-        article { max-width: 800px; margin: 40px auto; }
-        h1 { font-size: 2.2rem; color: var(--primary); margin-bottom: 20px; }
-        h2 { font-size: 1.5rem; color: var(--primary); margin: 30px 0 15px; }
-        .article-meta { display: flex; gap: 20px; font-size: 0.95rem; color: #666; margin-bottom: 24px; }
-        .breadcrumb { margin-bottom: 20px; font-size: 0.9rem; }
-        .breadcrumb a { color: var(--accent); text-decoration: none; }
-        p, li { margin-bottom: 12px; }
-        ul { margin: 15px 0 15px 22px; }
+      :root { --primary: #0f172a; --accent: #f97316; --text: #334155; --bg-light: #f8fafc; }
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      html { scroll-behavior: smooth; }
+      body { color: var(--text); line-height: 1.7; background: white; padding-bottom: 60px; font-family: system-ui, -apple-system, sans-serif; }
+      h1 { font-size: 2.5rem; color: var(--primary); margin-bottom: 20px; }
+      h2 { font-size: 1.8rem; color: var(--primary); margin: 40px 0 20px; }
+      h3 { font-size: 1.3rem; color: var(--primary); margin: 25px 0 15px; }
+      .site-header { background: white; box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; }
+      .header-inner { display: flex; justify-content: space-between; align-items: center; height: 70px; }
+      .logo { font-size: 1.5rem; font-weight: 700; color: var(--primary); text-decoration: none; }
+      .container { width: 90%; max-width: 900px; margin: 0 auto; padding: 0 15px; }
+      article { max-width: 800px; margin: 40px auto; }
+      .article-meta { display: flex; gap: 20px; font-size: 0.95rem; color: #666; margin-bottom: 30px; }
+      .breadcrumb { margin-bottom: 20px; font-size: 0.9rem; }
+      .breadcrumb a { color: var(--accent); text-decoration: none; }
+      p { margin-bottom: 18px; }
+      ul, ol { margin: 20px 0 20px 30px; }
+      li { margin-bottom: 10px; }
+      .site-footer { background: #0f172a; color: #94a3b8; padding: 60px 0 20px; }
+      .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 40px; }
+      .footer-col h4 { color: white; margin-bottom: 15px; }
+      .footer-col a { color: #94a3b8; text-decoration: none; }
+      .footer-bottom { text-align: center; padding-top: 20px; border-top: 1px solid #1e293b; margin-top: 30px; }
+      .mobile-sticky-bar { position: fixed; bottom: 0; left: 0; width: 100%; height: 60px; background: white; display: flex; box-shadow: 0 -2px 10px rgba(0,0,0,0.1); z-index: 999; }
+      .sticky-btn { flex: 1; display: flex; align-items: center; justify-content: center; text-decoration: none; font-weight: 700; }
+      .sticky-btn.phone { background: white; color: var(--primary); }
+      .sticky-btn.quote { background: var(--accent); color: var(--primary); }
     </style>
-    <link rel="stylesheet" href="../../assets/css/style.css">
+    <link rel="stylesheet" href="../../assets/css/style.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="../../assets/css/style.css"></noscript>
 </head>
 <body>
-<main class="container">
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="/" class="logo">Virasat Concrete Ltd.</a>
+      <button class="mobile-toggle" aria-label="Toggle navigation"><span class="hamburger"></span></button>
+      <nav class="main-nav">
+        <ul class="nav-list">
+          <li><a href="/">Home</a></li>
+          <li class="dropdown">
+            <a href="/services/" class="dropdown-toggle">Services ▾</a>
+            <div class="dropdown-content">
+              <a href="/services/driveways-calgary/">Driveways</a>
+              <a href="/services/garage-pads-calgary/">Garage Pads</a>
+              <a href="/services/exposed-concrete-calgary/">Exposed Aggregate</a>
+              <a href="/services/concrete-patios-calgary/">Patio Pads</a>
+              <a href="/services/sidewalks-steps-calgary/">Sidewalks & Steps</a>
+              <a href="/services/custom-concrete-calgary/">Other Services</a>
+            </div>
+          </li>
+          <li><a href="/projects/">Projects</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/about/">About</a></li>
+          <li><a href="/faq/">FAQ</a></li>
+          <li><a href="/#contact" class="nav-cta-btn">Get a Quote</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
   <article>
     <div class="breadcrumb"><a href="/blog/">Blog</a> / Repairs</div>
     <h1>Concrete Repair vs Replacement: Calgary Cost Guide</h1>
     <div class="article-meta"><span>Published: June 14, 2026</span><span>5 min read</span></div>
     <p>If you have cracks, scaling, or sinking sections, the biggest question is whether to repair now or replace the slab. In Calgary, freeze-thaw stress can turn small defects into major issues quickly.</p>
+
+    <h2>How to Decide: Start With Severity</h2>
+    <p>Not every crack means replacement. The right decision depends on crack width, movement, base condition, and how much of the slab is affected.</p>
+    <ul>
+      <li><strong>Minor:</strong> Hairline cracks, shallow surface wear</li>
+      <li><strong>Moderate:</strong> Repeated cracking, larger spalled areas</li>
+      <li><strong>Severe:</strong> Heaving, settlement, broken slab sections</li>
+    </ul>
+
     <h2>Choose Repair When</h2>
     <ul>
       <li>Damage is limited to surface areas</li>
       <li>Cracks are narrow and not moving</li>
       <li>Base remains stable</li>
     </ul>
+
+    <p>Repairs are usually best for extending lifespan while keeping costs controlled, especially when the slab is still structurally sound.</p>
+
     <h2>Choose Replacement When</h2>
     <ul>
       <li>Cracks are wide or recurring</li>
       <li>Sections are heaving or settling</li>
       <li>More than ~25% surface is deteriorated</li>
     </ul>
-    <p>Early action usually costs less than emergency replacement after winter damage accelerates.</p>
+
+    <h2>Typical Cost Ranges (Calgary)</h2>
+    <ul>
+      <li><strong>Minor crack/seal repairs:</strong> lower cost, short downtime</li>
+      <li><strong>Partial resurfacing:</strong> moderate cost, faster than full replacement</li>
+      <li><strong>Full replacement:</strong> highest upfront cost, best long-term reset</li>
+    </ul>
+
+    <h2>Hidden Costs to Consider</h2>
+    <p>Focusing only on immediate price can be misleading. Consider future maintenance, expected lifespan, drainage corrections, and whether recurring repairs will exceed replacement value over time.</p>
+
+    <h2>Best Time to Act</h2>
+    <p>Early summer and early fall are ideal windows. If damage is visible now, don't wait until winter. Early action usually costs less than emergency replacement after freeze-thaw cycles accelerate deterioration.</p>
+
+    <p>Need an objective recommendation? A professional inspection can show whether repair is still cost-effective or replacement is the smarter long-term investment.</p>
   </article>
 </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-col">
+        <h3>Virasat Concrete</h3>
+        <p>Professional residential and commercial concrete services in Calgary and surrounding areas. Building quality, one pour at a time.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="/services/">Services</a></li>
+          <li><a href="/projects/">Projects</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/faq/">FAQ</a></li>
+          <li><a href="/#contact">Contact</a></li>
+          <li><a href="/privacy-policy/">Privacy Policy</a></li>
+          <li><a href="/standards-of-service/">Standards of Service</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Our Services</h4>
+        <ul>
+          <li><a href="/services/driveways-calgary/">Driveways</a></li>
+          <li><a href="/services/garage-pads-calgary/">Garage Pads</a></li>
+          <li><a href="/services/concrete-patios-calgary/">Patios</a></li>
+          <li><a href="/services/sidewalks-steps-calgary/">Sidewalks & Steps</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:+15879362818">(587) 936-2818</a></li>
+          <li><a href="mailto:info@virasatconcrete.ca">info@virasatconcrete.ca</a></li>
+          <li>Calgary, AB</li>
+          <li>Mon-Sat: 7am - 7pm</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Virasat Concrete Ltd. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <div class="mobile-sticky-bar">
+    <a href="tel:+15879362818" class="sticky-btn phone">📞 Call Now</a>
+    <a href="/#contact" class="sticky-btn quote">Get Quote</a>
+  </div>
+
 <script src="../../assets/js/main.js" defer></script>
 </body>
 </html>
