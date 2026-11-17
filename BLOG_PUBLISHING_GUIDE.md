@@ -1,58 +1,24 @@
 # Blog Scheduling Instructions
 
 ## Publishing Schedule
-Posts should be published **every Wednesday at 9 AM** for consistent audience expectations.
+The publishing automation checks the queue **daily at approximately 8:15 AM Mountain Standard Time / 9:15 AM Mountain Daylight Time**. Articles are released on or after their `datePublished` date using the `America/Edmonton` time zone.
 
-## Current Blog Post
-1. **"How to Winterize Concrete in Calgary"** - Published March 12, 2026
-   - Keywords: winterize concrete Calgary, concrete sealing, freeze-thaw damage
-   - Estimated organic traffic: 150-300/month after 3 months
+## How Scheduled Publishing Works
 
-## Upcoming Blog Ideas (Pre-Written List)
+1. Add a complete article at `blog-scheduled/<queue-name>/index.html`.
+2. Set its canonical URL to the intended public route under `/blog/`.
+3. Set the JSON-LD `datePublished` and `dateModified` fields to the release date. Keep the visible “Published” date in sync.
+4. Ensure the intended `/blog/<slug>/` route does not already exist.
+5. Commit and push the queued post and workflow changes to `main`.
 
-### April 2026
-- **Week 1 (April 2):** "Spring Concrete Repair: Fix Winter Damage in Calgary"
-- **Week 2 (April 9):** "Concrete Driveway vs Asphalt: Cost & Durability Comparison"
-- **Week 3 (April 16):** "How Long Do Concrete Driveways Last in Calgary? (Expert Answer)"
-- **Week 4 (April 23):** "Best Concrete Sealers for Calgary's Climate (2026 Review)"
+The `Publish Due Blog Posts` GitHub Actions workflow checks the queue daily. When a date is due, it moves the post into `/blog/<slug>/`, updates the blog listing and sitemap, commits the update, and deploys the site. The queue folder remains disallowed in `robots.txt`; only public `/blog/` routes are published and indexed.
 
-### May 2026
-- **Week 1:** "Exposed Aggregate Concrete: Design Ideas for Calgary Patios"
-- **Week 2:** "Garage Pad Foundation: Everything Calgary Homeowners Need to Know"
-- **Week 3:** "Concrete Cracks: When to Repair vs. When to Replace"
-- **Week 4:** "Why Your Concrete Is Discoloring (And How to Fix It)"
+### Important GitHub setup
 
-## How to Auto-Publish (GitHub Actions)
-
-### Option 1: Manual Publishing (Current Setup)
-1. Edit `/blog/index.html` to add new article card
-2. Create new folder: `/blog/article-slug/index.html`
-3. Write article following the template above
-4. Push to GitHub (triggers automatic deploy)
-
-### Option 2: Scheduled Publishing (Recommended)
-**Setup GitHub Actions Workflow:**
-
-Create `.github/workflows/publish-blog.yml`:
-
-```yaml
-name: Auto-Publish Blog
-
-on:
-  schedule:
-    - cron: '0 14 * * 3'  # Every Wednesday at 9 AM Mountain Time
-  workflow_dispatch:
-
-jobs:
-  publish:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - name: Trigger deployment
-        run: echo "Blog publishing workflow complete"
-```
-
-This triggers your hosting platform's deploy on schedule.
+- Scheduled Actions only run when the workflow file is present on the default branch (`main`).
+- In GitHub, enable Actions and allow the workflow to write repository contents. The workflow needs `contents: write` and GitHub Pages deployment permissions.
+- After pushing a new schedule, open **Actions → Publish Due Blog Posts → Run workflow** once to verify it. Scheduled runs can be delayed by GitHub, so the workflow checks daily and catches up overdue posts on its next successful run.
+- Do not add a URL to the sitemap while it is still queued; the publisher adds the live URL when it publishes.
 
 ## Content Calendar Template
 

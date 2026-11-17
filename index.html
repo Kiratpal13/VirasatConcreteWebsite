@@ -63,7 +63,9 @@
     <meta property="og:url" content="https://virasatconcrete.ca/">
     <meta property="og:title" content="Virasat Concrete | Calgary Concrete Experts">
     <meta property="og:description" content="Durable, high-quality concrete services for Calgary homeowners. Get a free quote today.">
-    <meta property="og:image" content="https://virasatconcrete.ca/assets/images/og-image.jpg">
+    <meta property="og:image" content="https://virasatconcrete.ca/assets/images/hero-concrete-calgary-1280.webp">
+    <meta property="og:image:width" content="1280">
+    <meta property="og:image:height" content="854">
 
     <!-- Critical Inline CSS (hero, header, buttons, trust bar) -->
     <style>
@@ -535,6 +537,10 @@
                 <div class="contact-form-wrapper fade-in">
                     <form action="https://formspree.io/f/xeenbrgl" method="POST" id="quote-form">
                         <input type="hidden" name="_next" value="https://virasatconcrete.ca/thank-you/">
+                        <div aria-hidden="true" style="position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden;">
+                            <label for="company-website">Leave this field empty</label>
+                            <input type="text" id="company-website" name="_gotcha" tabindex="-1" autocomplete="off">
+                        </div>
                         <div class="form-group">
                             <label for="name">Full Name</label>
                             <input type="text" id="name" name="name" required placeholder="John Doe">
